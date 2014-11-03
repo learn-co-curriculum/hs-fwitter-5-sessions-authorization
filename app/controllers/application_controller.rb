@@ -17,8 +17,6 @@ class ApplicationController < Sinatra::Application
   end
 
   get '/tweets' do
-    # Tweet.new("Vanessa", "My first tweet!!! SO EXCITING OMG!!!")
-    # Tweet.new("Vanessa", "My second tweet!!! Still super exciting!!!")
     @tweets = Tweet.all
     @users = User.all
     erb :tweets
