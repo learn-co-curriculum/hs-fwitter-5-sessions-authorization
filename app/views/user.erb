@@ -20,13 +20,3 @@
     <input class="btn btn-primary" type="submit">
   </form>
 <% end %>
-
-<h3>Following</h3>
-<% @followings.each do |following| %>
-  <p><a href="/users/<%= following.id %>"><%= following.name %></a></p>
-<% end %>
-
-<h3>Followers</h3>
-<% @followers.each do |follower| %>
-  <p><a href="/users/<%= follower.id %>"><%= follower.name %></a></p>
-<% end %>
