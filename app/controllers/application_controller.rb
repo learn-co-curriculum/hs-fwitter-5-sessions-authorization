@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Application
     end
 
     def current_user
-      current_user = User.find_by(password: session[:id])
+      current_user = User.find(session[:id])
     end
   end
 
@@ -40,8 +40,12 @@ class ApplicationController < Sinatra::Application
 
   post '/sign-up' do
     @user = User.create(name: params[:name], email: params[:email])
-    session[:id] = @user.id
-    redirect '/users'
+    if @user.id
+      session[:id] = @user.id
+      redirect '/users'
+    else
+      redirect '/sign-in'
+    end
   end
 
   get '/sign-out' do
