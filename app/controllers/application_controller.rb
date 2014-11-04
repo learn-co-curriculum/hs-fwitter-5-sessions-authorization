@@ -38,8 +38,9 @@ class ApplicationController < Sinatra::Application
 
   post '/sign-in' do
     @user = User.find_by(email: params[:email])
-    if @user.id
+    if @user
       session[:id] = @user.id
+      session[:error] = nil
       redirect '/users'
     else
       session[:error] = "There is no user with that email address. Try again or sign up below."
@@ -55,6 +56,7 @@ class ApplicationController < Sinatra::Application
 
   get '/sign-out' do
     session[:id] = nil
+    session[:error] = nil
     redirect '/tweets'
   end
 end
