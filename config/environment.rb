@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'pry'
 require 'bundler'
-require 'bcrypt'
 Bundler.require
 
 require './app/models/tweet'
