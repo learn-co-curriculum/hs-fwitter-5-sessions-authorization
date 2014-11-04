@@ -10,6 +10,10 @@ class ApplicationController < Sinatra::Application
     def current_user
       current_user = User.find(session[:id])
     end
+
+    def error
+      session[:error]
+    end
   end
 
   get '/tweets' do
@@ -34,18 +38,19 @@ class ApplicationController < Sinatra::Application
 
   post '/sign-in' do
     @user = User.find_by(email: params[:email])
-    session[:id] = @user.id
-    redirect '/users'
-  end
-
-  post '/sign-up' do
-    @user = User.create(name: params[:name], email: params[:email])
     if @user.id
       session[:id] = @user.id
       redirect '/users'
     else
+      session[:error] = "There is no user with that email address. Try again or sign up below."
       redirect '/sign-in'
     end
+  end
+
+  post '/sign-up' do
+    @user = User.create(name: params[:name], email: params[:email])
+    session[:id] = @user.id
+    redirect '/users'
   end
 
   get '/sign-out' do
