@@ -33,6 +33,7 @@ class ApplicationController < Sinatra::Application
   end
 
   get '/sign-in' do
+    @signin = true
     erb :signin
   end
 
