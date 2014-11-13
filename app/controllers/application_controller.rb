@@ -1,6 +1,17 @@
 require_relative "../../config/environment"
 
-class ApplicationController < Sinatra::Application
+class ApplicationController < Sinatra::Base
+
+  configure do
+    set :public_folder, 'public'
+    set :views, 'app/views'
+    enable :sessions
+    set :session_secret, 'fwitter'
+  end
+
+  configure :development do
+    set :database, "sqlite3:///db/database.db"
+  end
 
   helpers do
     def signed_in?
