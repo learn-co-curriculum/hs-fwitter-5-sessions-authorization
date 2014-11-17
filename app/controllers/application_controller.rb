@@ -9,10 +9,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, 'fwitter'
   end
 
-  configure :development do
-    set :database, "sqlite3:///db/database.db"
-  end
-
   helpers do
     def signed_in?
       session[:id]
