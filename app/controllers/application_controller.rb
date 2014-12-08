@@ -39,6 +39,12 @@ class ApplicationController < Sinatra::Base
     erb :users
   end
 
+  post '/users' do
+    @user = User.create(name: params[:name], email: params[:email])
+    session[:id] = @user.id
+    redirect '/users'
+  end
+
   get '/sign-in' do
     @signin = true
     erb :signin
@@ -54,12 +60,6 @@ class ApplicationController < Sinatra::Base
       session[:error] = "There is no user with that email address. Try again or sign up below."
       redirect '/sign-in'
     end
-  end
-
-  post '/sign-up' do
-    @user = User.create(name: params[:name], email: params[:email])
-    session[:id] = @user.id
-    redirect '/users'
   end
 
   get '/sign-out' do
