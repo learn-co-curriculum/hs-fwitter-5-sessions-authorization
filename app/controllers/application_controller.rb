@@ -51,15 +51,20 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sign-in' do
-    @user = User.find_by(email: params[:email])
+    @user = User.find_by(email: params[:email], name: params[:name])
+    # "#{@user.name}"
     if @user
       session[:id] = @user.id
-      session[:error] = nil
-      redirect '/users'
-    else
-      session[:error] = "There is no user with that email address. Try again or sign up below."
-      redirect '/sign-in'
     end
+    redirect '/users'
+    # if @user && @user.name == params[:name]
+    #   session[:id] = @user.id
+    #   session[:error] = nil
+    #   redirect '/users'
+    # else
+    #   session[:error] = "There is no user with that email address. Try again or sign up below."
+    #   redirect '/sign-in'
+    # end
   end
 
   get '/sign-out' do
