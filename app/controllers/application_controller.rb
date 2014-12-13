@@ -39,10 +39,10 @@ class ApplicationController < Sinatra::Base
     erb :users
   end
 
-  post '/users' do
+  post '/sign-up' do
     @user = User.create(name: params[:name], email: params[:email])
     session[:id] = @user.id
-    redirect '/users'
+    redirect '/tweets'
   end
 
   get '/sign-in' do
@@ -57,11 +57,11 @@ class ApplicationController < Sinatra::Base
       session[:id] = @user.id
     end
     # session.inspect
-    redirect '/users'
+    redirect '/tweets'
     # if @user && @user.name == params[:name]
     #   session[:id] = @user.id
     #   session[:error] = nil
-    #   redirect '/users'
+    #   redirect '/tweets'
     # else
     #   session[:error] = "There is no user with that email address. Try again or sign up below."
     #   redirect '/sign-in'
