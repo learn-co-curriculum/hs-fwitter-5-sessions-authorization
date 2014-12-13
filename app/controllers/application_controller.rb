@@ -25,7 +25,8 @@ class ApplicationController < Sinatra::Base
 
   get '/tweets' do
     @tweets = Tweet.all
-    @users = User.all
+    @user = User.find_by(:id => session[:id])
+    # @users = User.all
     erb :tweets
   end
 

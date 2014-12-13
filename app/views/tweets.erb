@@ -6,8 +6,8 @@
 <% if session[:id] %>
   <h3>Add a tweet</h3>
   <form action="/tweets" method="POST">
-    <p><textarea rows="4" cols="50" name="status"></textarea></p>
-    <input type="hidden" name="user_id" value="<%= current_user.id %>">
-    <input class="btn btn-primary" type="submit">
+  <p>User: <%= @user.name %> <input type="hidden" name="user_id" value="<%= @user.id %>"></p>
+  <p>Status: <input type="text" name="status"></p>
+  <input class="btn btn-primary" type="submit">
   </form>
 <% end %>
