@@ -46,7 +46,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/sign-in' do
-    @signin = true
+    @signin_page = true
     erb :signin
   end
 
@@ -56,6 +56,7 @@ class ApplicationController < Sinatra::Base
     if @user
       session[:id] = @user.id
     end
+    # session.inspect
     redirect '/users'
     # if @user && @user.name == params[:name]
     #   session[:id] = @user.id

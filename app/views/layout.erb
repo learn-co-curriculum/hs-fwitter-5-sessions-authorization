@@ -11,7 +11,7 @@
 
       <% if signed_in? %>
         <p><%= current_user.name %></a> | <a href="/sign-out">Sign Out</a></p>
-      <% elsif !@signin %>
+      <% elsif !@signin_page %>
         <a href="/sign-in">Sign In</a>
       <% end %>
 
