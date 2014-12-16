@@ -1,4 +1,5 @@
 require_relative "../../config/environment"
+require 'pry'
 
 class ApplicationController < Sinatra::Base
 
@@ -53,11 +54,10 @@ class ApplicationController < Sinatra::Base
 
   post '/sign-in' do
     @user = User.find_by(email: params[:email], name: params[:name])
-    # "#{@user.name}"
     if @user
       session[:id] = @user.id
     end
-    # session.inspect
+    # binding.pry
     redirect '/tweets'
     # if @user && @user.name == params[:name]
     #   session[:id] = @user.id
