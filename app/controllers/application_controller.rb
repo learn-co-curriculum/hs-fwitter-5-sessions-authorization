@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sign-up' do
-    @user = User.create(name: params[:name], email: params[:email])
+    @user = User.create(:name => params[:name], :email => params[:email])
     session[:id] = @user.id
     redirect '/tweets'
   end
@@ -53,7 +53,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/sign-in' do
-    @user = User.find_by(email: params[:email], name: params[:name])
+    @user = User.find_by(:email => params[:email], :name => params[:name])
     if @user
       session[:id] = @user.id
     end
