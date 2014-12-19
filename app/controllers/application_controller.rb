@@ -12,11 +12,11 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def signed_in?
-      session[:id]
+      session[:user_id]
     end
 
     def current_user
-      current_user = User.find(session[:id])
+      current_user = User.find(session[:user_id])
     end
 
     def error
@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
 
   get '/tweets' do
     @tweets = Tweet.all
-    @user = User.find_by(:id => session[:id])
+    @user = User.find_by(:id => session[:user_id])
     # @users = User.all
     erb :tweets
   end
@@ -44,7 +44,7 @@ class ApplicationController < Sinatra::Base
   post '/sign-up' do
     @user = User.new(:name => params[:name], :email => params[:email])
     @user.save
-    session[:id] = @user.id
+    session[:user_id] = @user.id
     redirect '/tweets'
   end
 
@@ -56,12 +56,12 @@ class ApplicationController < Sinatra::Base
   post '/sign-in' do
     @user = User.find_by(:email => params[:email], :name => params[:name])
     if @user
-      session[:id] = @user.id
+      session[:user_id] = @user.id
     end
     # binding.pry
     redirect '/tweets'
     # if @user && @user.name == params[:name]
-    #   session[:id] = @user.id
+    #   session[:user_id] = @user.id
     #   session[:error] = nil
     #   redirect '/tweets'
     # else
@@ -71,7 +71,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/sign-out' do
-    session[:id] = nil
+    session[:user_id] = nil
     session[:error] = nil
     redirect '/tweets'
   end
