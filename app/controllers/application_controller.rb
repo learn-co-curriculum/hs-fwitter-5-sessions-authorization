@@ -1,4 +1,4 @@
-require_relative "../../config/environment"
+require './config/environment'
 require 'pry'
 
 class ApplicationController < Sinatra::Base
