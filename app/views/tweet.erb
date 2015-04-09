@@ -1,11 +1,6 @@
-<h2>Tweets!</h2>
-<% @tweets.each do |tweet| %>
-  <p><strong><%= tweet.user.name %>:</strong> <%= tweet.status %></p>
-<% end %>
-
 <% if session[:user_id] %>
-  <h3>Add a tweet</h3>
-  <form action="/tweets" method="POST">
+  <h2>Add a tweet</h2>
+  <form action="/tweet" method="POST">
   <p><strong>User:</strong> <%= @user.name %> <input type="hidden" name="user_id" value="<%= @user.id %>"></p>
   <p><strong>Status:</strong> <input type="text" name="status"></p>
   <input class="btn btn-primary" type="submit">

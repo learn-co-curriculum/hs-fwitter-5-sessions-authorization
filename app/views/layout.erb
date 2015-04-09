@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/style.css">
   </head>
-  <body> 
+  <body>
     <div class="container">
-      <h1>Welcome to Fwitter!</h1>
+      <h1><a href="/">Welcome to Fwitter!</a></h1>
 
       <% if signed_in? %>
         <p><%= current_user.name %></a> | <a href="/sign-out">Sign Out</a></p>
@@ -18,7 +18,7 @@
       <%= yield %>
 
       <div class="footer">
-        <h4><a href="/tweets">Tweets</a> | <a href="/users">Users</a></h4>
+        <h4><a href="/tweet">Tweet</a> | <a href="/users">Users</a></h4>
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

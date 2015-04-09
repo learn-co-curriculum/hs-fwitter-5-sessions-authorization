@@ -24,16 +24,22 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get '/tweets' do
+  get '/' do
     @tweets = Tweet.all
     @user = User.find_by(:id => session[:user_id])
     # @users = User.all
-    erb :tweets
+    erb :index
   end
 
-  post '/tweets' do
+  get '/tweet' do
+    @user = User.find_by(:id => session[:user_id])
+    # @users = User.all
+    erb :tweet
+  end
+
+  post '/tweet' do
     Tweet.create(:user_id => params[:user_id], :status => params[:status])
-    redirect '/tweets'
+    redirect '/'
   end
 
   get '/users' do
@@ -45,7 +51,7 @@ class ApplicationController < Sinatra::Base
     @user = User.new(:name => params[:name], :email => params[:email])
     @user.save
     session[:user_id] = @user.id
-    redirect '/tweets'
+    redirect '/'
   end
 
   get '/sign-in' do
@@ -59,7 +65,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
     end
     # binding.pry
-    redirect '/tweets'
+    redirect '/tweet'
     # if @user && @user.name == params[:name]
     #   session[:user_id] = @user.id
     #   session[:error] = nil
@@ -73,6 +79,6 @@ class ApplicationController < Sinatra::Base
   get '/sign-out' do
     session[:user_id] = nil
     session[:error] = nil
-    redirect '/tweets'
+    redirect '/'
   end
 end
