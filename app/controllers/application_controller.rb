@@ -64,16 +64,7 @@ class ApplicationController < Sinatra::Base
     if @user
       session[:user_id] = @user.id
     end
-    # binding.pry
     redirect '/tweet'
-    # if @user && @user.name == params[:name]
-    #   session[:user_id] = @user.id
-    #   session[:error] = nil
-    #   redirect '/tweets'
-    # else
-    #   session[:error] = "There is no user with that email address. Try again or sign up below."
-    #   redirect '/sign-in'
-    # end
   end
 
   # THIS METHOD IS FOR ADVANCED STUDENTS TRYING TO DO ERROR HANDLING
