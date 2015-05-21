@@ -25,3 +25,14 @@ This iteration of the Fwitter project focuses on adding sessions and authorizati
 + `layout.erb`:
   * The layout needs to get updated to display specific information depending on if a user is signed-in or not.
   * Here, we use the helper method `signed_in?` to check if we have signed in user or not. If they are signed in, then we display a link to sign-out. If they're not signed in, then we display the sign-in link.
+
++ `signin.erb`:
+  * This file users displays both the sign-in form and the sign-out form.
+  * The sign-out form is taken from `users.erb` day04 Fwitter.
+  * The sign-in form sends a POST request to `/sign-in` in the controller. The user's email and name gets sent via the params hash to the controller.
+
++ `tweet.erb`:
+  * We only want to display tweets if a user is logged in.
+  * The code to display the tweets needs to get wrapped in an if statement that checks to see if the user is logged in.
+  * We do that by checking `<%= if session[:user_id] %> exists. If it does, then the tweets are displayed.
+
