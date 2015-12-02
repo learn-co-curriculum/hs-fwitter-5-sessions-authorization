@@ -36,3 +36,5 @@ This iteration of the Fwitter project focuses on adding sessions and authorizati
   * The create tweet form needs to get wrapped in an if statement that checks to see if the user is logged in.
   * We do that by checking `<%= if session[:user_id] %> exists. If it does, then the form is displayed.
 
+
+<a href='https://learn.co/lessons/hs-fwitter-5-sessions-authorization' data-visibility='hidden'>View this lesson on Learn.co</a>
