@@ -37,4 +37,4 @@ This iteration of the Fwitter project focuses on adding sessions and authorizati
   * We do that by checking `<%= if session[:user_id] %> exists. If it does, then the form is displayed.
 
 
-<a href='https://learn.co/lessons/hs-fwitter-5-sessions-authorization' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/hs-fwitter-5-sessions-authorization' title='Fwitter Project!'>Fwitter Project!</a> on Learn.co and start learning to code for free.</p>
